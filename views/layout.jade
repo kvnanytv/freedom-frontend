@@ -2,8 +2,7 @@ doctype html
 html(ng-app='ui.freedom' ng-controller='mainController')
   head
     title= title
-    link(rel='stylesheet', href='/css/main.css')
-    link(rel='stylesheet', href='modules/common/menu/menu.css')
+    block styles
   body
     block content
     block scripts

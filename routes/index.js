@@ -4,13 +4,12 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', {
-  	path: 'dashboard',
-  	name : ['name 1', 'name 2']
+  	module_name: 'user'
   });
 });
 router.get('/admin', function(req, res) {
-  res.render('index', { 
-  	'path': 'notdashboard' 
+  res.render('index', {
+  	module_name: 'admin'
   });
 });
 module.exports = router;

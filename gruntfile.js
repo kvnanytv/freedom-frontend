@@ -1,12 +1,12 @@
-var modules = [
-	user:{},
-	admin:
-};
+// var modules = [
+// 	user:{},
+// 	admin:
+// };
 
 module.exports = function(grunt) {
 	grunt.initConfig({
 		jshint: {
-			files : 'src/js/**/*.js',
+			files : 'src/modules/**/*.js',
 			options : {
 				laxbreak: true,
 				expr: true,
@@ -14,20 +14,42 @@ module.exports = function(grunt) {
 			}
 		},
 		uglify: {
-			build: {
-				src: ['src/js/module/admin/**/*.js'],
-				dest: 'public/admin/min.js'
+			options: {
+				report: 'min',
+				mangle: false
 			},
-			build2: {
-				src: ['src/js/module/user/**/*.js'],
-				dest: 'public/user/min.js'
-			}
+			user: {
+				src: ['src/modules/app.js', 'src/modules/common/**/*.js', 'src/modules/user/**/*.js'],
+				dest: 'public/user/user.min.js'
+			},
+			admin: {
+				src: ['src/modules/app.js', 'src/modules/common/**/*.js', 'src/modules/admin/**/*.js'],
+				dest: 'public/admin/admin.min.js'
+			},
 		},
 		cssmin: {
 			user: {
-				src: 'src/css/*.css',
-				dest: 'public/user/min.css'
+				src: ['src/styles/*.css', 'src/modules/common/**/*.css', 'src/modules/user/**/*.css'],
+				dest: 'public/user/user.min.css'
+			},
+			admin: {
+				src: ['src/styles/*.css', 'src/modules/common/**/*.css', 'src/modules/admin/**/*.css'],
+				dest: 'public/admin/admin.min.css'
 			}
+		},
+		html2js: {
+		    options: {
+		      module: 'template-module',
+		      singleModule: true
+		    },
+		    user: {
+		      src: ['src/modules/user/**/*.tpl.html', 'src/modules/common/**/*.tpl.html'],
+		      dest: 'public/user/user.templates.js'
+		    },
+		    admin: {
+		      src: ['src/modules/admin/**/*.tpl.html', 'src/modules/common/**/*.tpl.html'],
+		      dest: 'public/admin/admin.templates.js'
+		    },
 		},
 		htmlmin: {
 			build: {
@@ -44,44 +66,42 @@ module.exports = function(grunt) {
 				dest: 'public/index.html'
 			}
 		},
-		html2js: {
-		    options: {
-		      module: 'template-module',
-		      singleModule: true
-		    },
-		    main: {
-		      src: ['src/**/*.tpl.html'],
-		      dest: 'public/templates.js'
-		    },
+		copy: {
+		  main: {
+		    files: [
+		      // includes files within path
+		      {expand: true, src: ['vendor/**'], dest: 'public/'},
+		    ]
+		  }
 		},
 		concat: {
 			css: {
-				src: 'src/css/*.css',
+				src: 'src/css1/*.css',
 				dest: 'src/min.css'
 			},
 			js: {
-				src: ['src/js/**/*.js'],
+				src: ['src/js1/**/*.js'],
 				dest: 'src/min.js'
 			}
 		},
 		watch: {
 			js: {
-				files: ['src/js/**/*.js'],
-				tasks: ['jshint', 'uglify', 'concat:js'],
+				files: ['src/**/*.js'],
+				tasks: ['jshint', 'uglify'],
 				options: {
 					spawn: false
 				}
 			},
 			css: {
-				files: ['src/css/*.css'],
-				tasks: ['cssmin', 'concat:css'],
+				files: ['src/**/*.css'],
+				tasks: ['cssmin'],
 				options: {
 					spawn: false
 				}
 			},
 			html: {
-				files: ['src/index.html'],
-				tasks: ['htmlmin'],
+				files: ['src/**/*.tpl.html'],
+				tasks: ['html2js'],
 				options: {
 					spawn: false
 				}
@@ -96,6 +116,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-html2js');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
-	grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'html2js', 'watch']);
+	grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'html2js', 'copy', 'watch']);
 };

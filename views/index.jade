@@ -1,34 +1,17 @@
 extends layout
+block styles
+  link(rel='stylesheet', href=module_name+'/'+module_name+'.min.css')
 block content
   div.sidebar(ng-include="'modules/common/menu/menu.tpl.html'")
   div.content(ui-view="main")
   div
-    p #{path}
-    p #{name[0]}
+    p #{module_name}
 //- load necessary scripts
 block scripts
-  script(src='lib/angularjs/angular.min.js')
-  script(src='lib/angularjs/angular-ui-router.min.js')
-  script(src='lib/angularjs/angular-route.js')
-  script(src='lib/angularjs/ui-bootstrap-tpls-0.11.0.min.js')
-  //- load necessary modules
-  
-  if path == "dashboard"
-    script.
-      var modules = null;
-    script(src='modules/profile/profile.js')
-    link(rel='stylesheet', href='modules/profile/profile.css')
-  else
-    //- names of modules to include
-    script.
-      var modules = ['userdashboard.overview', 'userdashboard.profile', 'userdashboard.config'];
-    script(src='user/modules/home/home.js')
-    link(rel='stylesheet', href='user/modules/home/home.css')
-    script(src='modules/profile/profile.js')
-    link(rel='stylesheet', href='user/modules/profile/profile.css')
-  
-
-
-  script(src='modules/app.js')
-  
+  script(src='vendor/angularjs/angular.js')
+  script(src='vendor/angularjs/angular-ui-router.min.js')
+  script(src='vendor/angularjs/angular-route.js')
+  script(src='vendor/angularjs/ui-bootstrap-tpls-0.11.0.min.js')
+  script(src=module_name+'/'+module_name+'.templates.js')
+  script(src=module_name+'/'+module_name+'.min.js')
   
