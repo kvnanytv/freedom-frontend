@@ -5,7 +5,7 @@ angular.module( 'userdashboard.profile', [])
     views: {
       "main": {
         controller: 'profileController',
-        templateUrl: 'modules/profile/profile.tpl.html'
+        templateUrl: 'modules/user/profile/profile.tpl.html'
       }
     },
     data:{ pageTitle: 'Profile' }
@@ -15,6 +15,4 @@ angular.module( 'userdashboard.profile', [])
 .controller( 'profileController', function ( $scope, $http) { 
       $scope.test = "profile page";
 })
-
 ;
-
