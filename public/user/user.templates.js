@@ -40,7 +40,7 @@ angular.module('template-module', []).run(['$templateCache', function($templateC
     "    <li ui-route=\"/overview\" ng-class=\"{active:$uiRoute}\">\n" +
     "      <a href=\"#/overview\">\n" +
     "        <i class=\"icon-home\"></i>\n" +
-    "        Overview\n" +
+    "        Overview - \n" +
     "      </a>\n" +
     "    </li>\n" +
     "    <li ui-route=\"/profile\" ng-class=\"{active:$uiRoute}\">\n" +

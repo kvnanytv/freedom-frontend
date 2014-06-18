@@ -4,7 +4,7 @@ angular.module('userdashboard.overview', [])
     url: '/overview',
     views: {
       "main": {
-        controller: 'HomeCtrl',
+        controller: 'homeController',
         templateUrl: 'modules/user/home/home.tpl.html'
       }
     },
@@ -13,7 +13,7 @@ angular.module('userdashboard.overview', [])
 })
 
 .controller( 'homeController', function ( $scope ) {
-  console.log("asd");
+  // console.log("asd");
 })
 ;
 

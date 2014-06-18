@@ -1,5 +1,9 @@
-angular.module('userdashboard.config', [])
-.controller( 'HomeCtrl', function HomeController( $scope ) {
-  console.log("asd");
+angular.module('admindashboard.config', [])
+.provider('config', function() {
+ this.$get = angular.noop;
+ this.module_name = "admin";
+})
+.service( 'routeService', function () {
+	this.getBaseUrl = "admin";
 })
 ;

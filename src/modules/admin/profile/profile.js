@@ -1,11 +1,11 @@
-angular.module( 'userdashboard.profile', [])
-.config(function config( $stateProvider ) {
+angular.module( 'admindashboard.profile', ['admindashboard.config'])
+.config(function config( $stateProvider, configProvider) {
   $stateProvider.state( 'profile', {
     url: '/profile',
     views: {
       "main": {
         controller: 'profileController',
-        templateUrl: 'modules/user/profile/profile.tpl.html'
+        templateUrl: 'modules/'+configProvider.module_name+'/profile/profile.tpl.html'
       }
     },
     data:{ pageTitle: 'Profile' }

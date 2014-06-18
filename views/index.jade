@@ -1,17 +1,19 @@
 extends layout
 block styles
-  link(rel='stylesheet', href=module_name+'/'+module_name+'.min.css')
+  link(rel='stylesheet', href='/'+module_name+'/'+module_name+'.min.css')
 block content
-  div.sidebar(ng-include="'modules/common/menu/menu.tpl.html'")
+  div.sidebar(ng-include="'modules/common/menu/menu.tpl.html'" ng-controller="menuController")
   div.content(ui-view="main")
   div
     p #{module_name}
 //- load necessary scripts
 block scripts
-  script(src='vendor/angularjs/angular.js')
-  script(src='vendor/angularjs/angular-ui-router.min.js')
-  script(src='vendor/angularjs/angular-route.js')
-  script(src='vendor/angularjs/ui-bootstrap-tpls-0.11.0.min.js')
-  script(src=module_name+'/'+module_name+'.templates.js')
-  script(src=module_name+'/'+module_name+'.min.js')
+  script(src='/vendor/angularjs/angular.js')
+  script(src='/vendor/angularjs/angular-ui-router.min.js')
+  script(src='/vendor/angularjs/angular-route.js')
+  script(src='/vendor/angularjs/ui-bootstrap-tpls-0.11.0.min.js')
+  script.
+    var module = '#{module_angular}.#{module_name}';
+  script(src='/'+module_name+'/'+module_name+'.templates.js')
+  script(src='/'+module_name+'/'+module_name+'.min.js')
   

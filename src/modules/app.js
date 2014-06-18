@@ -1,8 +1,9 @@
+console.log(module);
 angular.module( 'ui.freedom', [
   'ui.router',
-  'ui.freedom.user'
+  module
 ])
 .controller( 'mainController', function ( $scope) {
-  console.log("run!!!");
+  console.log('mainController');
 })
 ;
