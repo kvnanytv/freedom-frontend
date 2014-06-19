@@ -1,3 +1,11 @@
-.sideshit {
-  color:red;
+div.content {
+	background-color:red;
+	display:inline-block;
+	min-height:800px;
+	width:100%;
+	margin-top:50px;
+	background-color:#e6e6e6;
+}
+.cursor-pointer {
+	cursor: pointer;
 }

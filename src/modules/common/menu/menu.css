@@ -1,8 +1,14 @@
-ul.nav li {
-  padding:15px 15px;
-  height:20px;
+.sidebar {
+	position:absolute;
+	left:0px;
+	margin-top:50px;
+	width:200px;
+	display:inline-block;
 }
-ul.nav li a {
-  height:20px;
-  vertical-align: center;
+.sidebar .menu-container {
+	width:200px;
+}
+.sidebar .menu-container .nav {
+	height:50px;
+	width:200px;
 }

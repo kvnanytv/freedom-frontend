@@ -1,11 +1,11 @@
 extends layout
 block styles
+  link(rel='stylesheet', href='/vendor/bootstrap/css/bootstrap.min.css')
   link(rel='stylesheet', href='/'+module_name+'/'+module_name+'.min.css')
 block content
+  div.topbar(ng-include="'modules/common/topbar/topbar.tpl.html'" ng-controller="menuController")
   div.sidebar(ng-include="'modules/common/menu/menu.tpl.html'" ng-controller="menuController")
-  div.content(ui-view="main")
-  div
-    p #{module_name}
+  div.content.container(ui-view="main")
 //- load necessary scripts
 block scripts
   script(src='/vendor/angularjs/angular.js')
